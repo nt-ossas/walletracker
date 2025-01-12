@@ -59,6 +59,7 @@ function loadSaldo() {
 
 function transition() {
     var trans = document.createElement('div');
+    trans.classList.add('trans');
     var valore = parseFloat(document.getElementById('amount').value);
     var nome = document.getElementById('description').value;
     var data = new Date().toLocaleDateString();
@@ -77,12 +78,10 @@ function transition() {
     }
 
     trans.innerHTML = `
-    <div class="trans">
         <h1>${valore.toFixed(2)}</h1>
         <h4>${nome}</h4>
         <p class="trans-date">${data} ${orario}</p>
-        <i class="fa-solid fa-x"></i>
-    </div>`;
+        <i class="fa-solid fa-x"></i>`;
 
     trans.querySelector('i').addEventListener('click', function() {
         deleteTrans(trans, valore);
@@ -101,13 +100,12 @@ function loadTransazioni() {
     var transazioni = JSON.parse(localStorage.getItem('transazioni')) || [];
     transazioni.forEach(function(transazione) {
         var trans = document.createElement('div');
+        trans.classList.add('trans');
         trans.innerHTML = `
-        <div class="trans">
             <h1>${transazione.valore.toFixed(2)}</h1>
             <h4>${transazione.nome}</h4>
             <p class="trans-date">${transazione.data} ${transazione.orario}</p>
-            <i class="fa-solid fa-x"></i>
-        </div>`;
+            <i class="fa-solid fa-x"></i>`;
         
         trans.querySelector('i').addEventListener('click', function() {
             deleteTrans(trans, transazione.valore);
@@ -151,6 +149,8 @@ function deleteTrans(trans, valore) {
 function setSaldo(){
     var saldo = document.getElementById('saldo');
     var inputSaldo = parseFloat(document.getElementById('input-saldo').value);
+    if (isNaN(inputSaldo))
+        return;
     saldo.textContent = inputSaldo.toFixed(2);
     saveSaldo(inputSaldo);
     closePopup();

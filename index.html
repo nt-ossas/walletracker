@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Portfolio</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://cdni.iconscout.com/illustration/premium/thumb/e-wallet-illustration-download-in-svg-png-gif-file-formats--secure-digital-online-banking-transaction-business-activities-pack-people-illustrations-4609252.png?f=webp"/>
+    <meta name="author" content="Alex Graziano">
+    <meta name="theme-color" content="#28293D">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/e-wallet-illustration-download-in-svg-png-gif-file-formats--secure-digital-online-banking-transaction-business-activities-pack-people-illustrations-4609252.png?f=webp">
+            <div class="content">
+                <h1>Wallet Tracker</h1>
+            </div>
+        </div>
+    </header>
+    <!-- scrolltext -->
+    <div class="separa">
+        <div class="scroll-text">
+            <h3>Track Expenses</h3>
+            <h3>-</h3>
+            <h3>Manage Budget</h3>
+            <h3>-</h3>
+            <h3>Financial Goals</h3>
+            <h3>-</h3>
+            <h3>Income Tracker</h3>
+            <h3>-</h3>
+            <h3>Expense Categories</h3>
+            <h3>-</h3>
+            <h3>Monthly Reports</h3>
+            <h3>-</h3>
+            <h3>Transaction History</h3>
+            <h3>-</h3>
+            <h3>Balance Overview</h3>
+            <h3>-</h3>
+            <h3>Track Expenses</h3>
+            <h3>-</h3>
+            <h3>Manage Budget</h3>
+            <h3>-</h3>
+            <h3>Financial Goals</h3>
+            <h3>-</h3>
+            <h3>Income Tracker</h3>
+            <h3>-</h3>
+            <h3>Expense Categories</h3>
+            <h3>-</h3>
+            <h3>Monthly Reports</h3>
+            <h3>-</h3>
+            <h3>Transaction History</h3>
+            <h3>-</h3>
+            <h3>Balance Overview</h3>
+            <h3>-</h3>
+        </div>
+    </div>
+    <!--wallet-->
+    <main>
+        <h3 class="box" id="saldo">0.00</h3>
+        <div class="trio">
+            <div class="box button" onclick="openPopupSaldo()">
+                <h3>Saldo</h3>
+                <h4>Imposta il saldo del tuo portafoglio</h4>
+            </div>
+            <div class="box button head-group" onclick="openHistory(1)" id="head-group-1">
+                <h3>Entrate</h3>
+                <h4>Visualizza le entrate</h4>
+            </div>
+            <div class="box button head-group" onclick="openHistory(2)" id="head-group-2">
+                <h3>Uscite</h3>
+                <h4>Visualizza le uscite</h4>
+            </div>
+        </div>
+        <main id="group-1" class="group hidden"><div class="box"></div></main>
+        <main id="group-2" class="group hidden"><div class="box"></div></main>
+        <div class="box button" onclick="openPopup()">
+            <h3>Transizione</h3>
+            <h4>Aggiungi una transizione</h4>
+        </div>
+    </main> 
+    <!-- Pop-up transition -->
+    <div id="popup-overlay" class="popup-overlay">
+        <div class="popup-content">
+            <h3>Aggiungi una transizione</h3>
+            <form>
+                <div class="row">
+                    <label for="amount">Importo:</label>
+                    <input type="number" id="amount" name="amount">
+                </div>
+                <div class="row">
+                    <label for="description">Descrizione:</label>
+                    <input type="text" id="description" name="description">
+                </div>
+                <div class="button-duo">
+                    <button type="button" onclick="updateSaldo()">Conferma</button>
+                    <button type="button" onclick="closePopup()">Chiudi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Pop-up saldo -->
+    <div id="popup-saldo" class="popup-overlay">
+        <div class="popup-content">
+            <h3>Imposta il saldo</h3>
+            <form>
+                <input type="number" id="input-saldo" name="input-saldo">
+                <div class="button-duo">
+                    <button type="button" onclick="setSaldo()">Conferma</button>
+                    <button type="button" onclick="closePopup()">Chiudi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--footer-->
+    <footer>
+        <div class="box">
+            <h4 class="tag">2025 Wallet Tracker &copy; - All Rights Reserved - Powered by Ossas</h4>
+        </div>
+    </footer>
+</body>
+</html>

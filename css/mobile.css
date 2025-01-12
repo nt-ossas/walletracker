@@ -1,0 +1,108 @@
+@media (max-width: 768px) {
+    header .container .content h1{
+        font-size: 3rem;
+        padding-block: 30%;
+        margin-bottom: -15px;
+    }
+    #desktop{
+        display: none;
+    }
+    #mobile{
+        display: block;
+    }
+    nav{
+        margin-top: -22%;
+    }
+    nav .content{
+        height: 10px;
+        margin: 0;
+        gap: 25px;
+        height: 30px;
+        width: 60%;
+        margin-left: 40%;
+    }
+    nav .content a{
+        font-size: 1rem;
+        margin-top: .3rem;
+    }
+
+    nav .content a::after{   
+        top: 0;
+    }
+    
+    nav .content a.selected::after{
+        margin-top: 1.5rem;
+        height: 2px;
+    }
+    
+    nav .content a:hover::after{
+        display: none;
+    }
+
+    main{
+        margin-top: 24%;
+    }
+
+    .separa{
+        height: 35px;
+    }
+    .separa .scroll-text{
+        line-height: 5px;
+    }
+    .separa .scroll-text h3{
+        margin-inline: 1em;
+        font-size: 1rem;
+    }
+    .box {
+        padding: 20px;
+        margin-inline: 20px;
+        margin-top: -25px;
+    }
+     h3.box {
+        display: none;
+    }
+    .box h4 {
+        font-size: 1.5rem;
+    }
+    .box p, .box ul li {
+        font-size: 1rem;
+    }
+    .box ul li {
+        margin-left: -35px;
+    }
+    .box img {
+        max-width:90%;
+    }
+    .logos{
+        gap: 5%;
+    }
+    .logos img{
+        border-radius: 15px;
+        max-width: 50px !important;
+    }
+    #section-3 .img img{
+        max-width: 50px;
+        max-height: 50px;
+    }
+    .logo-img {
+        max-width:75px !important; 
+    }
+    h4.tag{
+        font-size: 12px;
+        text-align: center;
+        opacity: .75;
+    }
+    .build ul {
+        padding: 20px;
+    }
+    .dual{
+        flex-direction: column;
+    }
+    .trio{
+        gap: 5%;
+    }
+    .icons{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

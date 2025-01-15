@@ -3,9 +3,18 @@ document.getElementById('addSaleForm').addEventListener('submit', function(event
     const saleName = document.getElementById('saleName').value;
     const saleDate = new Date().toISOString().split('T')[0];
     addSale(saleName, 'proposta_accettata', saleDate);
+    document.getElementById('saleName').value = ''; 
 });
 
 function addSale(name, status, date) {
+    const sales = JSON.parse(localStorage.getItem('sales')) || [];
+    const saleExists = sales.some(sale => sale.name === name);
+
+    if (saleExists) {
+        alert('Una vendita con questo nome esiste già. Per favore, scegli un altro nome.');
+        return;
+    }
+
     const sale = {
         name: name,
         status: status,

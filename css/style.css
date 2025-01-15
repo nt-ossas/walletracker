@@ -577,3 +577,9 @@ button.choosen{
 .group .box {
     padding-bottom: 0;
 }
+
+a{
+    color: var(--accent-color);
+    text-decoration: none;
+    capitalize: uppercase;
+}

@@ -1,7 +1,8 @@
 document.getElementById('addSaleForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const saleName = document.getElementById('saleName').value;
-    const saleDate = new Date().toISOString().split('T')[0];
+    const saleDateInput = document.getElementById('saleDate').value;
+    const saleDate = saleDateInput ? saleDateInput : new Date().toISOString().split('T')[0];
     addSale(saleName, 'proposta_accettata', saleDate);
     document.getElementById('saleName').value = ''; 
 });

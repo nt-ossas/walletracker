@@ -1,0 +1,16 @@
+{
+    "name": "Personal Tracker",
+    "short_name": "Tracker",
+    "start_url": ".",
+    "background_color": "#28293D",
+    "theme_color": "#1E1E2E",
+    "description": "Il tuo tracker personale.",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "img/logo.png",
+        "sizes": "1080x1080",
+        "type": "image/png"
+      }
+    ] 
+}

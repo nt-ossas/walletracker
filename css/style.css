@@ -1,7 +1,7 @@
 :root{
     --bg-color: #1E1E2E;
     --primary-color:#28293D;
-    --accent-color:rgba(74, 144, 226, 1);
+    --accent-color:#4a90e2;
     --text:#E0E0FF;
     --text-secondary: #b3b3cc;
     --contrast-color: #FFD700;
@@ -30,7 +30,7 @@ header .container {
 }
 
 header .container img{
-    max-width: 250px;
+    max-width: 350px;
     margin-left: 10%;
     box-shadow: 0 0 0;
 }

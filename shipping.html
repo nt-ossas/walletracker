@@ -12,8 +12,10 @@
             integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
-    <script src="js/script.js" defer></script>
+    <script src="js/scroll.js" defer></script>
+    <script src="js/shipping.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/shipping.css">
     <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body>
@@ -29,21 +31,31 @@
     <!-- scrolltext -->
     <div class="separa">
         <div class="scroll-text">
-            <h3>Track Expenses</h3>
+            <h3>Track Shipments</h3>
             <h3>-</h3>
-            <h3>Manage Budget</h3>
+            <h3>Manage Couriers</h3>
             <h3>-</h3>
-            <h3>Financial Goals</h3>
+            <h3>Delivery Status</h3>
             <h3>-</h3>
-            <h3>Income Tracker</h3>
+            <h3>Package Tracking</h3>
             <h3>-</h3>
-            <h3>Expense Categories</h3>
+            <h3>Shipping History</h3>
             <h3>-</h3>
-            <h3>Monthly Reports</h3>
+            <h3>Estimated Delivery</h3>
             <h3>-</h3>
-            <h3>Transaction History</h3>
+            <h3>Courier Services</h3>
             <h3>-</h3>
-            <h3>Balance Overview</h3>
+            <h3>Shipment Reports</h3>
+            <h3>-</h3>
+            <h3>Delivery Overview</h3>
+            <h3>-</h3>
+            <h3>Order Management</h3>
+            <h3>-</h3>
+            <h3>Customer Support</h3>
+            <h3>-</h3>
+            <h3>Real-time Tracking</h3>
+            <h3>-</h3>
+            <h3>Logistics Solutions</h3>
             <h3>-</h3>
         </div>
     </div>
@@ -53,29 +65,21 @@
             <h3>Aggiungi Vendita</h3>
             <form id="addSaleForm">
                 <div class="row">
-                    <label for="saleName">Nome della Vendita:</label>
-                    <input type="text" id="saleName" name="saleName" required>
+                    <label for="saleName">Vendita:</label>
+                    <input type="text" id="saleName" name="saleName" placeholder="Nome della vendita" required>
                 </div>
                 <div class="row">
-                    <label for="saleStatus">Stato della Vendita:</label>
-                    <select id="saleStatus" name="saleStatus" required>
-                        <option value="proposta accettata">Proposta Accettata</option>
-                        <option value="preparato">Preparato</option>
-                        <option value="spedito">Spedito</option>
-                        <option value="consegnato">Consegnato</option>
-                        <option value="completato">Completato</option>
-                    </select>
-                </div>
-                <div class="row">
-                    <label for="saleDate">Data di Cambio Stato:</label>
+                    <label for="saleDate">Data:</label>
                     <input type="date" id="saleDate" name="saleDate">
                 </div>
                 <button type="submit">Aggiungi</button>
             </form>
         </div>
-        <div id="salesContainer" class="box">
+        <div class="box">
             <h3>Vendite</h3>
-            <!-- Le vendite verranno aggiunte qui -->
+            <div id="salesContainer">
+                <!-- vendite verranno aggiunte qui -->
+            </div>
         </div>
     </main>
     <!--footer-->
@@ -84,94 +88,5 @@
             <h4 class="tag">2025 shipping Tracker &copy; - All Rights Reserved - Powered by Ossas</h4>
         </div>
     </footer>
-    <script>
-        document.getElementById('addSaleForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const saleName = document.getElementById('saleName').value;
-            const saleStatus = document.getElementById('saleStatus').value;
-            const saleDate = document.getElementById('saleDate').value || new Date().toISOString().split('T')[0];
-            addSale(saleName, saleStatus, saleDate);
-        });
-
-        function addSale(name, status, date) {
-            const sale = {
-                name: name,
-                status: status,
-                date: date,
-                statusDates: {
-                    'proposta accettata': status === 'proposta accettata' ? date : '',
-                    'preparato': status === 'preparato' ? date : '',
-                    'spedito': status === 'spedito' ? date : '',
-                    'consegnato': status === 'consegnato' ? date : '',
-                    'completato': status === 'completato' ? date : ''
-                }
-            };
-            saveSale(sale);
-            renderSale(sale);
-        }
-
-        function saveSale(sale) {
-            const sales = JSON.parse(localStorage.getItem('sales')) || [];
-            sales.push(sale);
-            localStorage.setItem('sales', JSON.stringify(sales));
-        }
-
-        function loadSales() {
-            const sales = JSON.parse(localStorage.getItem('sales')) || [];
-            sales.forEach(sale => renderSale(sale));
-        }
-
-        function renderSale(sale) {
-            const salesContainer = document.getElementById('salesContainer');
-            const saleElement = document.createElement('div');
-            saleElement.classList.add('sale');
-            saleElement.innerHTML = `
-                <h4>${sale.name}</h4>
-                <p>Data di Cambio Stato: ${sale.date}</p>
-                <div class="status-bar">
-                    <div class="status ${sale.status === 'proposta accettata' || sale.status === 'preparato' || sale.status === 'spedito' || sale.status === 'consegnato' || sale.status === 'completato' ? 'active' : ''}"></div>
-                    <div class="status ${sale.status === 'preparato' || sale.status === 'spedito' || sale.status === 'consegnato' || sale.status === 'completato' ? 'active' : ''}"></div>
-                    <div class="status ${sale.status === 'spedito' || sale.status === 'consegnato' || sale.status === 'completato' ? 'active' : ''}"></div>
-                    <div class="status ${sale.status === 'consegnato' || sale.status === 'completato' ? 'active' : ''}"></div>
-                    <div class="status ${sale.status === 'completato' ? 'active' : ''}"></div>
-                </div>
-                <select onchange="updateSaleStatus('${sale.name}', this.value)">
-                    <option value="proposta accettata" ${sale.status === 'proposta accettata' ? 'selected' : ''}>Proposta Accettata</option>
-                    <option value="preparato" ${sale.status === 'preparato' ? 'selected' : ''}>Preparato</option>
-                    <option value="spedito" ${sale.status === 'spedito' ? 'selected' : ''}>Spedito</option>
-                    <option value="consegnato" ${sale.status === 'consegnato' ? 'selected' : ''}>Consegnato</option>
-                    <option value="completato" ${sale.status === 'completato' ? 'selected' : ''}>Completato</option>
-                </select>
-                <input type="date" onchange="updateSaleDate('${sale.name}', this.value)" value="${sale.date}">
-            `;
-            salesContainer.appendChild(saleElement);
-        }
-
-        function updateSaleStatus(name, status) {
-            const sales = JSON.parse(localStorage.getItem('sales')) || [];
-            const sale = sales.find(s => s.name === name);
-            if (sale) {
-                sale.status = status;
-                sale.statusDates[status] = new Date().toISOString().split('T')[0];
-                localStorage.setItem('sales', JSON.stringify(sales));
-                document.getElementById('salesContainer').innerHTML = '';
-                loadSales();
-            }
-        }
-
-        function updateSaleDate(name, date) {
-            const sales = JSON.parse(localStorage.getItem('sales')) || [];
-            const sale = sales.find(s => s.name === name);
-            if (sale) {
-                sale.date = date;
-                sale.statusDates[sale.status] = date;
-                localStorage.setItem('sales', JSON.stringify(sales));
-                document.getElementById('salesContainer').innerHTML = '';
-                loadSales();
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', loadSales);
-    </script>
 </body>
 </html>

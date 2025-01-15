@@ -100,4 +100,9 @@
     .box#saldo{
         font-size:3rem;
     }
+
+    .date-shipping{
+        font-size: .5rem !important;
+        margin-top: 2.5px;
+    }
 }
